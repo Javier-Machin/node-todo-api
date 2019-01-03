@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 
 
-// /todos post route, create new todo
+// /todos POST route, create new todo
 app.post('/todos', (req, res) => {
   const todo = new Todo({
     text: req.body.text
@@ -28,3 +28,5 @@ app.post('/todos', (req, res) => {
 app.listen(3000, () => {
   console.log('Started on port 3000');
 });
+
+module.exports = { app };
