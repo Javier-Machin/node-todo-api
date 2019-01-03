@@ -7,6 +7,24 @@ const { User } = require('./models/user');
 
 const app = express();
 
+// Add bodyParser middleware
+app.use(bodyParser.json());
+
+
+// /todos post route, create new todo
+app.post('/todos', (req, res) => {
+  const todo = new Todo({
+    text: req.body.text
+  });
+
+  todo.save().then((doc) => {
+    res.send(doc);
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+
 app.listen(3000, () => {
   console.log('Started on port 3000');
 });
