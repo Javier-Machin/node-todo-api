@@ -1,13 +1,16 @@
 const expect = require('expect');
 const request = require('supertest');
+const { ObjectID } = require('mongodb');
 
 const { app } = require('./../server');
 const { Todo } = require('./../models/todo');
 
 // todos seeds
 const todos = [{
+  _id: new ObjectID(),
   text: 'First test todo'
 }, {
+  _id: new ObjectID(),
   text: 'Second test todo'
 }];
 
@@ -65,6 +68,7 @@ describe('POST /todos', () => {
 
 });
 
+
 describe('GET /todos', () => {
   it('should get all todos', (done) => {
     request(app)
@@ -73,6 +77,41 @@ describe('GET /todos', () => {
       .expect((res) => {
         expect(res.body.todos.length).toBe(2);
       })
+      .end(done);
+  })
+});
+
+
+describe('GET /todos/:id', () => {
+  it('should return one todo', (done) => {
+    // works without .toHexString()
+    let validId = todos[0]._id;
+
+    request(app)
+      .get(`/todos/${validId}`)
+      .expect(200)
+      .expect((res) => {
+        expect(res.body.todo.text).toBe(todos[0].text);
+      })
+      .end(done);
+  });
+
+  it('should respond with 404 for invalid id', (done) => {
+    let invalidId = '12345abc';
+
+    request(app)
+      .get(`/todos/${invalidId}`)
+      .expect(404)
+      .end(done);
+  })
+
+  it('should respond with 404 for todo not found', (done) => {
+    // works without .toHexString()
+    const validNonExistentId = new ObjectID();
+
+    request(app)
+      .get(`/todos/${validNonExistentId}`)
+      .expect(404)
       .end(done);
   })
 });
