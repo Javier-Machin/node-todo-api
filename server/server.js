@@ -65,6 +65,26 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
+// /todos/:id DELETE route, delete one todo
+app.delete('/todos/:id', (req, res) => {
+  const id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  Todo.findOneAndDelete(id).then((todo) => {
+    if (!todo) {
+      return res.status(404).send();
+    }
+
+    res.send({ todo });
+  }).catch((e) => {
+    res.status(400).send();
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
