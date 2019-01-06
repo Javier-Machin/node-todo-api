@@ -150,7 +150,7 @@ describe('DELETE /todos/:id', () => {
   it('should respond with 404 for todo not found', (done) => {
     // works without .toHexString()
     const validNonExistentId = new ObjectID();
-
+    
     request(app)
       .delete(`/todos/${validNonExistentId}`)
       .expect(404)
