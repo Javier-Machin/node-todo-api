@@ -84,8 +84,7 @@ describe('GET /todos', () => {
 
 describe('GET /todos/:id', () => {
   it('should return one todo', (done) => {
-    // works without .toHexString()
-    let validId = todos[0]._id;
+    const validId = todos[0]._id;
 
     request(app)
       .get(`/todos/${validId}`)
@@ -97,7 +96,7 @@ describe('GET /todos/:id', () => {
   });
 
   it('should respond with 404 for invalid id', (done) => {
-    let invalidId = '12345abc';
+    const invalidId = '12345abc';
 
     request(app)
       .get(`/todos/${invalidId}`)

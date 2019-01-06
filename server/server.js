@@ -7,6 +7,7 @@ const { Todo } = require('./models/todo');
 const { User } = require('./models/user');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Add bodyParser middleware
 app.use(bodyParser.json());
@@ -55,7 +56,7 @@ app.get('/todos/:id', (req, res) => {
    
     // if todo - send it back
     res.send({ todo });
-    
+
     // error
     // 400 - and send empty body back
   }).catch((e) => {
@@ -64,8 +65,8 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log('Started on port 3000');
+app.listen(port, () => {
+  console.log(`Started on port ${port}`);
 });
 
 module.exports = { app };
