@@ -74,7 +74,7 @@ app.delete('/todos/:id', (req, res) => {
   }
 
   Todo.findOneAndDelete(id).then((todo) => {
-    if (!todo) {
+    if (todo._id.toHexString() !== id) {
       return res.status(404).send();
     }
 
