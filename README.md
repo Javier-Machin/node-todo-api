@@ -15,13 +15,13 @@ To run the test suite:
 
 It's also deployed in Heroku: https://git.heroku.com/blooming-shelf-83566.git
 
-Public Endpoints: 
+**Public Endpoints:** 
 
 POST `/users` - Body parameters: `{email:string, password:string}` - Create and log in new user
 
 POST `/users/login` - Body parameters: `{email:string, password:string}` - Log in with the provided credentials
 
-Private Endpoints (requires to be logged in, (x-auth header)):
+**Private Endpoints (requires to be logged in, (x-auth header)):**
 
 GET `/todos` - A list of all todos by the current user 
 
@@ -51,13 +51,13 @@ Para ejecutar los tests:
 
 Está disponible en Heroku: https://git.heroku.com/blooming-shelf-83566.git
 
-Endpoints públicos:
+**Endpoints públicos:**
 
 POST `/users` - Body parameters: `{email:string, password:string}` - Crea un nuevo usuario e inicia sesión 
 
 POST `/users/login` - Body parameters: `{email:string, password:string}` - Inicia sesión con las credenciales especificadas
 
-Endpoints privados (requiren estar logeado (x-auth header)):
+**Endpoints privados (requiren estar logeado (x-auth header)):**
 
 GET `/todos` - Lista de todos los todos creados por el usuario con sesión activa
 
