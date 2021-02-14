@@ -13,8 +13,6 @@ To run the test suite:
 
 `$ npm run test-watch`
 
-It's also deployed in Heroku: https://git.heroku.com/blooming-shelf-83566.git
-
 **Public Endpoints:** 
 
 POST `/users` - Body parameters: `{email:string, password:string}` - Create and log in new user
@@ -48,8 +46,6 @@ Para ejecutarla localmente:
 Para ejecutar los tests:
 
 `$ npm run test-watch`
-
-Está disponible en Heroku: https://git.heroku.com/blooming-shelf-83566.git
 
 **Endpoints públicos:**
 
